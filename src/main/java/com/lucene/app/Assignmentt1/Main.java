@@ -22,6 +22,7 @@ public class Main {
         QuerySearcher searcher = new QuerySearcher();
         searcher.setAnalyzer(analyzer);
         searcher.readIndex();
+	search.setSimilarity(similarity)
         
         try {
 			searcher.getResults();
