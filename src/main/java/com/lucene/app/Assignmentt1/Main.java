@@ -17,6 +17,7 @@ public class Main {
     private static void runModel(Analyzer analyzer, Similarity similarity) {
         Indexer indexer = new Indexer();
         indexer.setAnalyzer(analyzer);
+        indexer.setSimilarity(similarity);
         indexer.createIndex();
         QuerySearcher searcher = new QuerySearcher();
         searcher.setAnalyzer(analyzer);

@@ -6,6 +6,7 @@ import org.apache.lucene.document.*;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 class Indexer {
 
     private Analyzer analyzer = new StandardAnalyzer();
+    private Similarity similarity;
 
     Analyzer getAnalyzer() {
         return analyzer;
@@ -24,13 +26,17 @@ class Indexer {
     void setAnalyzer(Analyzer analyzer) {
         this.analyzer = analyzer;
     }
+    
+    void setSimilarity(Similarity similarity) {
+    	this.similarity = similarity;
+    }
 
     void createIndex() {
     	System.out.println("Creating index...");
         try {
             IndexWriterConfig config = new IndexWriterConfig(analyzer);
+            config.setSimilarity(similarity);
             config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
-
             Directory dir = FSDirectory.open(CranParser.INDEX_DIR);
             IndexWriter writer = new IndexWriter(dir, config);
 

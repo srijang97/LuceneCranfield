@@ -31,6 +31,10 @@ class QuerySearcher {
     void setAnalyzer(Analyzer analyzer) {
         this.analyzer = analyzer;
     }
+    
+    void setSimilarity(Similarity similarity) {
+    	searcher.setSimilarity(similarity);
+    }
 
     void readIndex() {
         try {
@@ -56,7 +60,7 @@ class QuerySearcher {
 				mywriter.write(result);
 			}
 			mywriter.close();
-			System.out.println("Query results written to file src/res/results.out");
+			System.out.println("Query results written to file src/results.out");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
