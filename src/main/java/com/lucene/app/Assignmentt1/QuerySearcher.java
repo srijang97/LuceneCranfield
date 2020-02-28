@@ -22,7 +22,7 @@ class QuerySearcher {
     private Analyzer analyzer = new StandardAnalyzer();
     private IndexSearcher searcher;
     private ArrayList<String> queries = CranParser.readQueries();
-    private static final int NUM_RESULTS = 1000;
+    private static final int NUM_RESULTS = 50;
     private ArrayList<String> docs = new ArrayList<>();
     Analyzer getAnalyzer() {
         return analyzer;
